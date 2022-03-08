@@ -1,0 +1,24 @@
+name: C
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses:
+        actions/checkout@v2
+
+    - name: Install build essentials
+      run: |
+        sudo apt-get install build-essential
+
+    - name: Test
+      run: |
+        make && ./tests
+
