@@ -1,1 +1,21 @@
-testing.h
+# testing.h
+[![C](https://github.com/djpiper28/testing.h/actions/workflows/c.yml/badge.svg)](https://github.com/djpiper28/testing.h/actions/workflows/c.yml)
+
+## Usage
+```c
+#include "testing.h"
+
+int test_func()
+{
+	  ASSERT(1 == 1);
+	  return 1;
+}
+
+//...
+
+unit_test tests[] = {
+	  {&test_func, "This test will pass as 1 == 1"}
+};
+int failed_tests = run_tests(tests, sizeof(tests) / sizeof(*tests), "the module you have just tested");
+```
+
