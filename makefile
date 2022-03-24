@@ -1,2 +1,2 @@
 all:
-	gcc -g testing.c test.c -o tests
+	gcc -g testing.c logger.c test.c -o tests

@@ -1,9 +1,19 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include "logger.h"
 #include "ansi_colour.h"
 
-#define ASSERT(x) if (!(x)) { printf(ANSI_BACKGROUND_RED "Test Error: Assertion failure, line %d in %s" ANSI_RESET "\n", __LINE__, __FILE__); return 0; }
+#define TEST_FAIL ANSI_RED    "test-fail" ANSI_RESET
+#define TEST_PASS ANSI_GREEN  "test-pass" ANSI_RESET
+#define TEST_INFO ANSI_YELLOW "test-info" ANSI_RESET
+#define ASSERT(x) if (!(x)) \
+    { \
+				lprintf(LOG_ERROR, "Test Error: Assertion failure, line " \
+								ANSI_RED "%d" ANSI_RESET " in " ANSI_RED "%s" ANSI_RESET "\n", \
+								__LINE__, __FILE__); return 0; \
+    }
+#define TESTS_SIZE(tests) (sizeof(tests) / sizeof(*tests))
 
 typedef struct unit_test {
     int (*test_method)();
