@@ -9,7 +9,12 @@
 void __lprintf(const char *tag, const char *fmt, ...);
 
 #include <stdio.h>
-#define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
-				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", __FILE__, __LINE__ ),\
-				__lprintf
+#ifdef __FILENAME__
+#define ___FNANE __FILENAME__
+#else
+#define ___FNANE __FILE__
+#endif
 
+#define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
+				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", ___FNANE, __LINE__ ),\
+				__lprintf
