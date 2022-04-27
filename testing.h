@@ -4,6 +4,7 @@
 #include "logger.h"
 #include "ansi_colour.h"
 
+#define TESTS_SIZE(tests) (sizeof(tests) / sizeof(*tests))
 #define SUB_TEST(test_name, ...) \
 int test_name() \
 { \
@@ -11,8 +12,8 @@ int test_name() \
     __VA_ARGS__, \
   }; \
   \
-  int failed_tests = run_tests(tests, sizeof(tests) / sizeof(*tests), "Running Sub Module " #test_name " Tests"); \
-  lprintf(LOG_INFO, "%d/%d tests failed.\n", failed_tests, sizeof(tests) / sizeof(*tests)); \
+  int failed_tests = run_tests(tests, TESTS_SIZE(tests), "Running Sub Module " #test_name " Tests"); \
+  lprintf(LOG_INFO, "%d/%d tests failed.\n", failed_tests, TESTS_SIZE(tests)); \
   return failed_tests == 0; \
 }
 
@@ -25,7 +26,6 @@ int test_name() \
       ANSI_RED "%d" ANSI_RESET " in " ANSI_RED "%s" ANSI_RESET "\n", \
       __LINE__, __FILE__); return 0; \
 }
-#define TESTS_SIZE(tests) (sizeof(tests) / sizeof(*tests))
 
 typedef struct unit_test {
     int (*test_method)();
