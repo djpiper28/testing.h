@@ -1,4 +1,5 @@
 #pragma once
+#define _POSIX_THREAD_SAFE_FUNCTIONS
 #include "ansi_colour.h"
 
 #define LOG_ERROR   ANSI_RED    "error"   ANSI_RESET
@@ -18,9 +19,4 @@ void __lprintf(const char *tag, const char *fmt, ...);
 #define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
 				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", ___FNANE, __LINE__ ),\
 				__lprintf
-
-#include <time.h>
-#ifndef localtime_r
-#define localtime_r(T,Tm) (localtime_s(Tm,T) ? NULL : Tm)
-#endif
 
