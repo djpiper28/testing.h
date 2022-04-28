@@ -18,3 +18,9 @@ void __lprintf(const char *tag, const char *fmt, ...);
 #define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
 				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", ___FNANE, __LINE__ ),\
 				__lprintf
+
+#include <time.h>
+#ifndef localtime_r
+#define localtime_r(T,Tm) (localtime_s(Tm,T) ? NULL : Tm)
+#endif
+
