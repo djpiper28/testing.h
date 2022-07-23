@@ -1,6 +1,12 @@
 # testing.h
 [![C](https://github.com/djpiper28/testing.h/actions/workflows/c.yml/badge.svg)](https://github.com/djpiper28/testing.h/actions/workflows/c.yml)
 
+## Configuring The Logger
+Add this to CMakeLists.txt to get the right file names in debug mode
+```cmake
+add_definitions("-D__FILENAME__=(__FILE__ [SOURCE_PATH_SIZE])")
+```
+
 ## Usage
 ```c
 #include "testing.h"
