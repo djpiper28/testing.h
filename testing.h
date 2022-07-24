@@ -13,7 +13,7 @@ int test_name() \
   }; \
   \
   int failed_tests = run_tests(tests, TESTS_SIZE(tests), "Running Sub Module " #test_name " Tests"); \
-  lprintf(LOG_INFO, "%d/%d tests failed.\n", failed_tests, TESTS_SIZE(tests)); \
+  lprintf(LOG_INFO, "%ld/%ld tests failed.\n", failed_tests, TESTS_SIZE(tests)); \
   return failed_tests == 0; \
 }
 
@@ -36,3 +36,4 @@ typedef struct unit_test {
 int test_func(int (*test_method)(), const char *test_name);
 // Test a set if named functions
 int run_tests(unit_test *tests, size_t number, const char *module_name);
+
