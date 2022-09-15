@@ -4,7 +4,7 @@
 ## Configuring The Logger
 Add this to CMakeLists.txt to get the right file names in debug mode
 ```cmake
-add_definitions("-D__FILENAME__=(__FILE__ [SOURCE_PATH_SIZE])")
+add_definitions("-D__FILENAME__=(&__FILE__ [SOURCE_PATH_SIZE])")
 ```
 
 ## Usage
