@@ -4,6 +4,10 @@
 #include "logger.h"
 #include "ansi_colour.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #define TESTS_SIZE(tests) (sizeof(tests) / sizeof(*tests))
 #define SUB_TEST(test_name, ...) \
 int test_name() \
@@ -36,4 +40,8 @@ typedef struct unit_test {
 int test_func(int (*test_method)(), const char *test_name);
 // Test a set if named functions
 int run_tests(unit_test *tests, size_t number, const char *module_name);
+
+#ifdef __cplusplus
+}
+#endif
 
