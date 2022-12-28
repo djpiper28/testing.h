@@ -7,6 +7,9 @@
 #define LOG_INFO    ANSI_GREEN  "info"    ANSI_RESET
 #define LOG_STREAM stderr
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 void __lprintf(const char *tag, const char *fmt, ...);
 
 #include <stdio.h>
@@ -19,4 +22,8 @@ void __lprintf(const char *tag, const char *fmt, ...);
 #define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
 				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", ___FNANE, __LINE__ ),\
 				__lprintf
+
+#ifdef __cplusplus
+}
+#endif
 
