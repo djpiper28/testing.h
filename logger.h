@@ -1,5 +1,7 @@
 #pragma once
+#ifndef _POSIX_THREAD_SAFE_FUNCTIONS
 #define _POSIX_THREAD_SAFE_FUNCTIONS
+#endif
 #include "ansi_colour.h"
 
 #define LOG_ERROR   ANSI_RED    "error"   ANSI_RESET
