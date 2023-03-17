@@ -10,11 +10,12 @@ void __lprintf(const char *tag, const char *fmt, ...)
     // Get time
     time_t rawtime;
     time(&rawtime);
-    struct tm *info = localtime(&rawtime);
+    struct tm info;
+    localtime_r(&rawtime, &info);
 
     // Time to string
     char time_buffer[TIME_BUFFER_LEN];
-    strftime(time_buffer, sizeof(time_buffer), "%x - %H:%M:%S %Z", info);
+    strftime(time_buffer, sizeof(time_buffer), "%x - %H:%M:%S %Z", &info);
 
     fprintf(LOG_STREAM, "[%s] %s: ", tag, time_buffer);
 
