@@ -16,7 +16,7 @@ int test_name() \
     __VA_ARGS__, \
   }; \
   \
-  int failed_tests = run_tests(tests, TESTS_SIZE(tests), "Running Sub Module " #test_name " Tests"); \
+  int failed_tests = run_tests(tests, TESTS_SIZE(tests), "Running Sub Module " ANSI_GREEN #test_name ANSI_RESET " Tests"); \
   lprintf(LOG_INFO, "%ld/%ld tests failed.\n", failed_tests, TESTS_SIZE(tests)); \
   return failed_tests == 0; \
 }
