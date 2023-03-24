@@ -28,7 +28,7 @@ int test_name() \
 { \
   lprintf(LOG_ERROR, "Test Error: Assertion failure, line " \
       ANSI_RED "%d" ANSI_RESET " in " ANSI_RED "%s" ANSI_RESET "\n", \
-      __LINE__, __FILE__); return 0; \
+      __LINE__, ___FNANE); return 0; \
 }
 
 typedef struct unit_test {

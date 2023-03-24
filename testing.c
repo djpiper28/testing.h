@@ -2,7 +2,7 @@
 
 int test_func(int (*test_method)(), const char *test_name)
 {
-    lprintf(TEST_INFO, "Running unit test %s: \n", test_name);
+    lprintf(TEST_INFO, "Running unit test " ANSI_GREEN "%s" ANSI_RESET ": \n", test_name);
 
     int status = test_method();
     if (status) {
