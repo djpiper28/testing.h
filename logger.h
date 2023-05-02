@@ -12,6 +12,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+/// Prints the tag then the contents of fmt, ... as printf would
 void __lprintf(const char *tag, const char *fmt, ...);
 
 #include <stdio.h>
@@ -21,6 +22,7 @@ void __lprintf(const char *tag, const char *fmt, ...);
 #define ___FNANE __FILE__
 #endif
 
+/// A wrapper for __lprintf to print a trace then the log nessage
 #define lprintf fprintf(LOG_STREAM, "(" ANSI_YELLOW "%s" ANSI_RESET \
 				":" ANSI_YELLOW "%d" ANSI_RESET ") \t", ___FNANE, __LINE__ ),\
 				__lprintf
