@@ -11,7 +11,11 @@ void __lprintf(const char *tag, const char *fmt, ...)
     time_t rawtime;
     time(&rawtime);
     struct tm info;
+#ifdef _WINDOWS
     localtime_s(&info, &rawtime);
+#else
+    localtime_r(&rawtime, &inf);
+#endif
 
     // Time to string
     char time_buffer[TIME_BUFFER_LEN];
