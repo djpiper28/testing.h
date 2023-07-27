@@ -14,7 +14,7 @@ void __lprintf(const char *tag, const char *fmt, ...)
 #ifdef _WINDOWS
     localtime_s(&info, &rawtime);
 #else
-    localtime_r(&rawtime, &inf);
+    localtime_r(&rawtime, &info);
 #endif
 
     // Time to string
