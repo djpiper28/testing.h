@@ -20,5 +20,10 @@ jobs:
 
     - name: Test
       run: |
-        make && ./tests
-
+        make
+        ./tests
+        ./main_test_example
+        ./main_test_example 0
+        ./main_test_example 1
+        ./main_test_example 1 1 1 1 1 1 1 1
+        ./main_test_example help || true

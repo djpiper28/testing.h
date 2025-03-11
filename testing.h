@@ -24,6 +24,22 @@ int test_name() \
   return failed_tests == 0; \
 }
 
+/// Creates a method to run all of the tests, it takes the same arguments 
+/// as masin(): `(int argc, char **argv)`. It then parses these arguments
+/// to allow limited amounts of tests to be executed
+/// Usage: MAIN_TEST(method_name, {&method_1, "Description"}, ...)
+#define MAIN_TEST(test_name, ...) \
+int test_name(int argc, char **argv) \
+{ \
+  unit_test tests[] = { \
+    __VA_ARGS__, \
+  }; \
+  \
+  int failed_tests = run_main_tests(argc, argv, tests, TESTS_SIZE(tests), "Running tests for" ANSI_GREEN #test_name ANSI_RESET " Tests"); \
+  lprintf(LOG_INFO, "%ld/%ld tests failed.\n", failed_tests, argc - 1); \
+  return failed_tests == 0; \
+}
+
 #define TEST_FAIL ANSI_RED    "test-fail" ANSI_RESET
 #define TEST_PASS ANSI_GREEN  "test-pass" ANSI_RESET
 #define TEST_INFO ANSI_YELLOW "test-info" ANSI_RESET
@@ -44,8 +60,10 @@ typedef struct unit_test {
 
 /// Standalone test for a function
 int test_func(int (*test_method)(), const char *test_name);
-/// Test a set if named functions
+/// Test a set of named functions
 int run_tests(unit_test *tests, size_t number, const char *module_name);
+/// Test some or all of the functions based off of the user input in argc, and argv
+int run_main_tests(int argc, char **argv, unit_test *tests, size_t number, const char *module_name);
 
 #ifdef __cplusplus
 }
